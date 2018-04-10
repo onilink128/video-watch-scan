@@ -1,0 +1,44 @@
+{
+  "name": "video-watch-scan",
+  "version": "0.2.1-beta.0",
+  "description": "Module responsible for watching the library folders and manage the files.",
+  "main": "dist/manager.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://onilink128@gitlab.com/Samidare/my-anime-file-manager.git"
+  },
+  "keywords": [
+    "video",
+    "watcher",
+    "scan"
+  ],
+  "author": "onilink128",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://gitlab.com/Samidare/my-anime-file-manager/issues"
+  },
+  "homepage": "https://gitlab.com/Samidare/my-anime-file-manager#README",
+  "dependencies": {
+    "chokidar": "1.6.1",
+    "ffmpeg-binaries": "^3.2.2-3",
+    "fluent-ffmpeg": "2.1.2",
+    "md5-file": "3.1.1",
+    "mv": "2.1.1",
+    "walk": "2.3.9"
+  },
+  "devDependencies": {
+    "@types/chokidar": "^1.6.0",
+    "@types/fluent-ffmpeg": "0.0.2",
+    "del": "2.2.2",
+    "gulp": "3.9.1",
+    "gulp-bump": "^2.7.0",
+    "gulp-json-modify": "^1.0.2",
+    "gulp-typescript": "3.1.6",
+    "semver": "^5.5.0",
+    "typescript": "2.3.2",
+    "yargs": "^8.0.1"
+  }
+}
