@@ -13,6 +13,7 @@ import {
     ICallbackItemFunction,
     ICallbackEndFunction
 } from "./interfaces";
+import { IOptions } from "../commom/interfaces";
 
 const walk = require('walk');
 
@@ -30,7 +31,7 @@ export class videoScan implements IVideoScan {
      * @constructor
      * @param folder The folder containing the videos to scan.
      */
-    constructor(folder: string, options?: any) {
+    constructor(folder: string, options?: IOptions) {
         options = options ? options : {};
         this.withScreenShot = options.withScreenShot ? options.withScreenShot : false;
         this.strongId = options.strongId ? options.strongId : false;

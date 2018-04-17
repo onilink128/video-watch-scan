@@ -1,13 +1,19 @@
 //* Classes */
 import { videoScan } from "./scan/videoScan";
 import { videoWatcher } from "./watcher/videoWatcher";
+import { IOptions } from "./commom/interfaces";
 
 /**
- * the main class of file manager
+ * the main class of video Analyser
  */
-export class Manager {
-    private options: any;
-    constructor(options?: any) {
+export class Video {
+    private options?: IOptions;
+
+    /**
+     * constructor
+     * @param options the options of data generation
+     */
+    constructor(options?: IOptions) {
         this.options = options;
     }
 

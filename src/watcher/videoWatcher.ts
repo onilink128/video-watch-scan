@@ -7,6 +7,7 @@ import { fileUtils } from '../commom/fileUtils';
 /**interfaces */
 import { IVideoData } from "../video/interfaces";
 import { Guid } from "guid-typescript";
+import { IOptions } from "../commom/interfaces";
 
 /**
  * Class responsible for watching the changes in folder
@@ -18,7 +19,7 @@ export class videoWatcher {
     private objVideoInfo: videoInfo;
     private folder: string;
 
-    constructor(folder: string, options?: any) {
+    constructor(folder: string, options?: IOptions) {
         options = options ? options : {};
         this.withScreenShot = options.withScreenShot ? options.withScreenShot : false;
         this.strongId = options.strongId ? options.strongId : false;

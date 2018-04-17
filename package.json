@@ -41,5 +41,8 @@
     "semver": "^5.5.0",
     "typescript": "2.3.2",
     "yargs": "^8.0.1"
+  },
+  "typescript": {
+    "definition": "dist/video.d.ts"
   }
 }

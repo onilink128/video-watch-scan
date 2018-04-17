@@ -1,18 +1,18 @@
-import * as fileManager from "./src/manager";
+import { Video } from "./src/video";
 
 let options = {
     withScreenShot: false,
     strongId: false
 };
 
-let manager = new fileManager.Manager(options);
+let analyser = new Video(options);
 
 /**Video Scan */
-var videoScan = manager.createVideoScan("C:\\Videos\\Biblioteca");
+var videoScan = analyser.createVideoScan("C:\\Videos\\Biblioteca");
 
 videoScan.start(itemScanned, endScan);
-    console.log("scan started.");
-    console.log("time:", new Date());
+console.log("scan started.");
+console.log("time:", new Date());
 
 function itemScanned(videoItem: any) {
     console.log("time:", new Date());
@@ -26,7 +26,7 @@ function endScan() {
 /**End - Video Scan */
 
 /**Video Watcher */
-var videoWatcher = manager.createVideoWatch("C:\\Videos\\Novos");
+var videoWatcher = analyser.createVideoWatch("C:\\Videos\\Novos");
 
 videoWatcher.start(itemAdded, itemRemoved);
 
