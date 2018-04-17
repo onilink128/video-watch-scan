@@ -3,6 +3,8 @@ import * as fs from "fs";
 
 import { videoInfo } from "../video/videoInfo";
 import { fileUtils } from "../commom/fileUtils"
+import { Guid } from "guid-typescript";
+
 
 /** interfaces */
 import {
@@ -18,14 +20,20 @@ const walk = require('walk');
  * Class responsible for scanning a directory by analyzing video files
  */
 export class videoScan implements IVideoScan {
+    private withScreenShot: boolean;
+    private strongId: boolean;
     private walker: any;
     private objVideoInfo: videoInfo;
     private folder: string;
+
     /**
      * @constructor
      * @param folder The folder containing the videos to scan.
      */
-    constructor(folder: string) {
+    constructor(folder: string, options?: any) {
+        options = options ? options : {};
+        this.withScreenShot = options.withScreenShot ? options.withScreenShot : false;
+        this.strongId = options.strongId ? options.strongId : false;
         this.folder = folder;
         this.walker = walk.walk(folder, { followLinks: true });
         this.objVideoInfo = new videoInfo();
@@ -43,12 +51,17 @@ export class videoScan implements IVideoScan {
                 if (fileUtils.isVideoFile(fileStat.name)) {
                     console.log("File", fileStat.name, "found");
                     let videoPath: string;
-                    let hash: string;
+                    let id: string = "";
 
                     videoPath = path.join(root, fileStat.name);
-                    hash = fileUtils.createFileHash(videoPath);
 
-                    this.objVideoInfo.getMediaData(videoPath, hash, (mediaData: any) => {
+                    if (this.strongId) {
+                        id = fileUtils.createFileHash(videoPath);
+                    } else {
+                        id = Guid.create().toString();
+                    }
+
+                    this.objVideoInfo.getMediaData(videoPath, id, this.withScreenShot, (mediaData: any) => {
                         callbackItemScanned(mediaData);
                         next();
                     });

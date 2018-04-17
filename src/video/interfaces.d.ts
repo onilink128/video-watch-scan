@@ -1,5 +1,5 @@
 export interface IVideoData {
-    id: string;
+    id?: string;
     fileName: string;
     addData: Date;
     createdData: Date;
@@ -9,6 +9,7 @@ export interface IVideoData {
     width: number;
     height: number;
     chapters: any[];
+    image?: string;
 }
 
 export interface IVideoMetaData {

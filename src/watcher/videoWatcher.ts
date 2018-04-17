@@ -6,16 +6,22 @@ import { fileUtils } from '../commom/fileUtils';
 
 /**interfaces */
 import { IVideoData } from "../video/interfaces";
+import { Guid } from "guid-typescript";
 
 /**
  * Class responsible for watching the changes in folder
  */
 export class videoWatcher {
+    private withScreenShot: boolean;
+    private strongId: boolean;
     private watcher: any;
     private objVideoInfo: videoInfo;
     private folder: string;
 
-    constructor(folder: string) {
+    constructor(folder: string, options?: any) {
+        options = options ? options : {};
+        this.withScreenShot = options.withScreenShot ? options.withScreenShot : false;
+        this.strongId = options.strongId ? options.strongId : false;
         this.objVideoInfo = new videoInfo();
         this.folder = folder;
     }
@@ -37,11 +43,15 @@ export class videoWatcher {
         this.watcher.on("add", (fullPath: any) => {
             try {
                 console.log("File", fileUtils.getFileNameFromFullPath(fullPath), "added");
-                let hash: string;
+                let id: string = "";
 
-                hash = fileUtils.createFileHash(fullPath);
+                if (this.strongId) {
+                    id = fileUtils.createFileHash(fullPath);
+                } else {
+                    id = Guid.create().toString();
+                }
 
-                this.objVideoInfo.getMediaData(fullPath, hash, callBackAddFile);
+                this.objVideoInfo.getMediaData(fullPath, id, this.withScreenShot, callBackAddFile);
 
             } catch (err) {
                 console.error(err);

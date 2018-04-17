@@ -1,3 +1,4 @@
+import * as fs from "fs";
 const md5File = require('md5-file');
 
 /**
@@ -41,6 +42,26 @@ export class fileUtils {
      */
     public static getPathFromFullPath(fullPath: string): string {
         return fullPath.substr(0, fullPath.lastIndexOf("\\"));
+    }
+
+    /**
+     * convert the image file to base64 string
+     * @param fullPath the full path to the image file
+     * @return the base64 string
+     */
+    public static getBase64FromImage(fullPath: string): string {
+        var bitmap = fs.readFileSync(fullPath);
+        // convert binary data to base64 encoded string
+        return new Buffer(bitmap).toString("base64");
+    }
+
+
+    /**
+     * remove the image file from temp folder
+     * @param fullPath the full path to the image file
+     */
+    public static deleteImage(fullPath: string): void {
+        fs.unlinkSync(fullPath);
     }
 
 }

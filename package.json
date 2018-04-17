@@ -25,9 +25,10 @@
     "chokidar": "1.6.1",
     "ffmpeg-binaries": "^3.2.2-3",
     "fluent-ffmpeg": "2.1.2",
+    "guid-typescript": "^1.0.7",
     "md5-file": "3.1.1",
     "mv": "2.1.1",
-    "walk": "2.3.9"
+    "walk": "2.3.13"
   },
   "devDependencies": {
     "@types/chokidar": "^1.6.0",

@@ -3,9 +3,10 @@ var del = require("del");
 var exec = require("child_process").exec;
 var gulp = require("gulp");
 var jsonModify = require("gulp-json-modify");
-var packageData = require("./package.json");
 var semver = require("semver");
 var ts = require("gulp-typescript");
+
+var packageData = require("./package.json");
 var tsProject = ts.createProject("tsconfig.json");
 
 gulp.task("update-version", function () {
