@@ -2,7 +2,7 @@
   "name": "video-watch-scan",
   "version": "0.2.1-beta.0",
   "description": "Module responsible for watching the library folders and manage the files.",
-  "main": "dist/manager.js",
+  "main": "dist/video.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

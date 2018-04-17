@@ -37,7 +37,12 @@ gulp.task("compileTs", ["update-version"], function () {
         .js.pipe(gulp.dest("dist"));
 });
 
-gulp.task("clear-dist", ["update-version", "compileTs", "publish-npm"], function () {
+gulp.task("copy-definitions", ["compileTs"], function () {
+    return gulp.src("./src/**/*.d.ts")
+        .pipe(gulp.dest("dist"));
+});
+
+gulp.task("clear-dist", ["update-version", "compileTs", "publish-npm", "copy-definitions"], function () {
     return del("dist/**", { force: true });
 });
 
@@ -45,6 +50,7 @@ gulp.task("publish", [
     "update-version",
     "compileTs",
     "publish-npm",
+    "copy-definitions",
     "clear-dist"
 ]);
 
