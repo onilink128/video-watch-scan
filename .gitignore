@@ -105,3 +105,9 @@ config.js
 config.js.map
 
 # End of https://www.gitignore.io/api/node,windows,visualstudiocode
+
+# declaration files
+*.d.ts
+**/*.d.ts
+
+!**/interfaces.d.ts
